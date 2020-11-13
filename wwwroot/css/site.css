@@ -26,12 +26,15 @@ a {
 
 /* Sticky footer styles
 -------------------------------------------------- */
+*{
+  font-family: 'Lato', sans-serif;
+}
 html {
-  font-size: 14px;
+  font-size: 13px;
 }
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
@@ -60,7 +63,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 .footer {
   position: absolute;
@@ -68,4 +71,33 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+
+/*=================================================================================*/
+/*                               Global Styles                                     */
+/*=================================================================================*/
+:root{
+  --primary-color: #1E8D31;
+  --primary-color-light: #2fa343;
+}
+
+.btn-primary{
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+.btn-primary:hover{
+  background-color: var(--primary-color-light);
+  border: 1px solid var(--primary-color-light);
+}
+
+/*==============================================================================*/
+/*                                 User style                                   */
+/*==============================================================================*/
+
+.message{
+  font-size: .75rem;
+  top: 85%;
 }
