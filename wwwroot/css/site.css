@@ -85,7 +85,7 @@ body {
 }
 
 a{
-  color: #212529;
+  color: #212529;   /* Pasar a variable */
 }
 
 a:hover{
@@ -102,15 +102,25 @@ a:hover{
   border: 1px solid var(--primary-color-light);
 }
 
+.btn-outline-primary{
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline-primary:hover{
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
 .form-control{
   border-radius: 50px;
   padding-left: 40px;
 }
 
 .input-icon{
-  color: #6c757d;
+  color: #6c757d;   /* Pasar a variable */
   left: 14px;
-  top: 10px;
+  bottom: 10px;
   font-size: 1.2rem;
   position: absolute;
 }
@@ -125,4 +135,22 @@ a:hover{
 }
 .top-85{
   top: 85%;
+}
+
+/*==============================================================================*/
+/*                                 Register                                  */
+/*==============================================================================*/
+.register__tab{
+  top: 10%;
+}
+
+.register__tab-selected::after{
+  background-color: var(--primary-color);
+  content: '';
+  display: block;
+  text-align: center;
+  height: 3px;
+  position: absolute;
+  top: 37px;
+  width: 100%;
 }

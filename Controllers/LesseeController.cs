@@ -20,5 +20,11 @@ namespace AlquilerApp.Controllers
         {
             return View();
         }
+
+        [Route("Lessee/Register/Account-Info")]
+        public IActionResult RegisterAccountInfo()
+        {
+            return View();
+        }
     }
 }
