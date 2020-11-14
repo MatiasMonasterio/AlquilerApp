@@ -112,6 +112,17 @@ a:hover{
   border: 1px solid var(--primary-color);
 }
 
+.btn-secundary{
+  background-color: transparent;
+  border: none;
+  color: var(--primary-color-light);
+  font-size: .85rem;
+}
+
+.btn-secundary:hover{
+  text-decoration: underline;
+}
+
 .form-control{
   border-radius: 50px;
   padding-left: 40px;
@@ -153,4 +164,9 @@ a:hover{
   position: absolute;
   top: 37px;
   width: 100%;
+}
+
+.form-title{
+  font-weight: 800;
+  font-size: 1.1rem;
 }
