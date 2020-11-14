@@ -61,10 +61,6 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  /* margin-bottom: 60px; */
-}
 .footer {
   position: absolute;
   bottom: 0;
@@ -84,12 +80,19 @@ body {
   --primary-color-light: #2fa343;
 }
 
+body{
+  color: #707070;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 a{
-  color: #212529;   /* Pasar a variable */
+  color: #707070;   /* Pasar a variable */
 }
 
 a:hover{
-  color: var(--primary-color);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -136,6 +139,11 @@ a:hover{
   position: absolute;
 }
 
+.title-main{
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
 /*==============================================================================*/
 /*                                 User style                                   */
 /*==============================================================================*/
@@ -169,4 +177,56 @@ a:hover{
 .form-title{
   font-weight: 800;
   font-size: 1.1rem;
+}
+
+/*==============================================================================*/
+/*                                 Propietario layout                           */
+/*==============================================================================*/
+.sidebar{
+  border-right: 1px solid #E2E2E2;
+  width: 22%;
+  min-width: 200px;
+}
+.sidebar-list{
+  list-style: none;
+}
+.sidebar-link{
+  padding: 8px 12px;
+  display: inline-block;
+  width: 100%;
+}
+.sidebar-link:hover{
+  background-color: var(--primary-color-light);
+  color: white;
+}
+.sidebar-item{
+  display: flex;
+  align-items: center;
+}
+.sidebar-item__icon{
+  font-size: 2rem;
+  padding-right: 10px;
+}
+
+/*==============================================================================*/
+/*                                     Dashboard                                */
+/*==============================================================================*/
+.card{
+  border: none;
+  box-shadow: 0 0 6px rgba(71, 71, 71, .52);
+}
+.card:hover{
+  box-shadow: 0 0 8px rgba(71, 71, 71, .7);
+}
+.card-title{
+  color: var(--primary-color-light);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.card-username{
+  color: #afafaf;
+  font-size: .85rem;
+}
+.card-body{
+  font-size: .8rem;
 }
