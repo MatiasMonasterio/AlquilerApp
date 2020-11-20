@@ -21,10 +21,10 @@ namespace AlquilerApp.Controllers
             return View();
         }
 
-        [Route("Lessee/Account-Info")]
-        public IActionResult RedirectRegisterAccountInfo(){
-            return RedirectToAction("RegisterAccountInfo");
-        }
+        // [Route("Lessee/Account-Info")]
+        // public IActionResult RedirectRegisterAccountInfo(){
+        //     return RedirectToAction("RegisterAccountInfo");
+        // }
 
         [Route("Lessee/Register/Account-Info")]
         public IActionResult RegisterAccountInfo()
@@ -33,10 +33,10 @@ namespace AlquilerApp.Controllers
         }
 
 
-        [Route("Lessee/Departments-Info")]
-        public IActionResult RedirectRegisterDepartmentsInfo(){
-            return RedirectToAction("RegisterDepartmentsInfo");
-        }
+        // [Route("Lessee/Departments-Info")]
+        // public IActionResult RedirectRegisterDepartmentsInfo(){
+        //     return RedirectToAction("RegisterDepartmentsInfo");
+        // }
 
         [Route("Lessee/Register/Departments-Info")]
         public IActionResult RegisterDepartmentsInfo()
@@ -46,6 +46,13 @@ namespace AlquilerApp.Controllers
 
         public IActionResult Dashboard()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Department( string idDeparment )
+        {
+            // this.ViewBag.idDeparment = idDeparment;
             return View();
         }
     }

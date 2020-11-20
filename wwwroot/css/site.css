@@ -1,116 +1,62 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-/* a {
-  color: #0366d6;
-} */
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-*{
-  font-family: 'Lato', sans-serif;
-}
-html {
-  font-size: 13px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 15px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}
-
-
-
-
-/*=================================================================================*/
+﻿/*=================================================================================*/
 /*                               Global Styles                                     */
 /*=================================================================================*/
-:root{
-  --primary-color: #1E8D31;
-  --primary-color-light: #2fa343;
+:root {
+  /* COLOR LIST */
+  --gray: #707070;
+  --green: #1E8D31;
+  --green-light: #2fa343;
+
+
+  /* FONT COLOR */
+  --font-color-primary: var(--gray);
+  --primary-color: var(--green);
+  --primary-color-light: var(--green-light);
+
+
+  /* BACKGROUND COLOR */
+
+  /* FONT SIZE */
+  --font-size-base: 15px;
 }
 
-body{
-  color: #707070;
-  box-sizing: border-box;
+* {
+  font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
 }
-
-a{
-  color: #707070;   /* Pasar a variable */
+html {
+  font-size: var(--font-size-base);
 }
-
-a:hover{
+body {
+  color: var(--font-color-primary);
+  box-sizing: border-box;
+}
+a {
+  color: var(--font-color-primary);   /* Pasar a variable */
+}
+a:hover {
   color: inherit;
   text-decoration: none;
 }
-
-.btn-primary{
+button {
+  color: inherit;
+}
+.btn-primary {
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: var(--primary-color-light);
   border: 1px solid var(--primary-color-light);
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
 }
 
-.btn-outline-primary:hover{
+.btn-outline-primary:hover {
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }
@@ -186,6 +132,7 @@ a:hover{
   border-right: 1px solid #E2E2E2;
   width: 22%;
   min-width: 200px;
+  max-width: 300px;
 }
 .sidebar-list{
   list-style: none;
@@ -229,4 +176,78 @@ a:hover{
 }
 .card-body{
   font-size: .8rem;
+}
+
+/*==============================================================================*/
+/*                                     Deparment                                */
+/*==============================================================================*/
+.btn-fee-show{
+  background-color: transparent;
+  border: none;
+  font-size: .85rem;
+}
+.deparment-card{
+  border: none;
+  text-align: left;
+}
+.deparment-card:hover{
+  background-color: lightgray;
+}
+.deparment-card__icon{
+  border: 2px solid gray;
+  border-radius: 100px;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 10px;
+  color: #707070;
+}
+.deparment-card__fee{
+  color: var(--primary-color-light);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.deparment-card__date{
+  font-size: .8rem;
+}
+
+.fee-details-container{
+  width: 34vw;
+  min-width: 280px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fee-details-container__title{
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.fee-main{
+  overflow-y: auto;
+  height: 100vh;
+}
+.fee-details-container{
+  border-left: 1px solid gainsboro;
+  color: inherit;
+}
+.fee-details__button{
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  border-top: 1px solid gainsboro;
+  text-align: left;
+}
+.fee-details__button:last-child{
+  border-bottom: 1px solid gainsboro;
+}
+.fee-details__button-icon{
+  height: 1.1rem;
+  width: 1.1rem;
+  margin-right: 10px;
+}
+
+.confirm__text{
+  font-size: 1.2rem;
+  font-weight: 900;
 }
