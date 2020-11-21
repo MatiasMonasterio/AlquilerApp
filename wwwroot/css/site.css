@@ -131,8 +131,9 @@ button {
 .sidebar{
   border-right: 1px solid #E2E2E2;
   width: 22%;
-  min-width: 200px;
+  min-width: 220px;
   max-width: 300px;
+  overflow-y: auto;
 }
 .sidebar-list{
   list-style: none;
@@ -153,6 +154,9 @@ button {
 .sidebar-item__icon{
   font-size: 2rem;
   padding-right: 10px;
+}
+.department-list {
+  overflow-y: hidden;
 }
 
 /*==============================================================================*/
