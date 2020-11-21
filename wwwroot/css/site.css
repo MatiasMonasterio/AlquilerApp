@@ -131,7 +131,7 @@ button {
 .sidebar{
   border-right: 1px solid #E2E2E2;
   width: 22%;
-  min-width: 220px;
+  min-width: 230px;
   max-width: 300px;
   overflow-y: auto;
 }
@@ -142,6 +142,7 @@ button {
   padding: 8px 12px;
   display: inline-block;
   width: 100%;
+  background-color: transparent;
 }
 .sidebar-link:hover{
   background-color: var(--primary-color-light);
@@ -162,6 +163,10 @@ button {
 /*==============================================================================*/
 /*                                     Dashboard                                */
 /*==============================================================================*/
+.dashboard {
+  overflow-y: auto;
+  max-height: 100vh;
+}
 .card{
   border: none;
   box-shadow: 0 0 6px rgba(71, 71, 71, .52);
