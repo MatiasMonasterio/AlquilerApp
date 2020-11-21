@@ -55,5 +55,10 @@ namespace AlquilerApp.Controllers
             // this.ViewBag.idDeparment = idDeparment;
             return View();
         }
+
+        public IActionResult Settings()
+        {
+            return View();
+        }
     }
 }

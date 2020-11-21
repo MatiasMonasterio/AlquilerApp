@@ -251,3 +251,17 @@ button {
   font-size: 1.2rem;
   font-weight: 900;
 }
+
+/*==============================================================================*/
+/*                                     Settings                                 */
+/*==============================================================================*/
+.settings {
+  overflow-y: auto;
+}
+.secondary-title{
+  font-size: 15px;
+  font-weight: 900;
+}
+.footer{
+  font-size: 13px;
+}
