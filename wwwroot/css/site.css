@@ -37,6 +37,7 @@ html {
 body {
   color: var(--color-font-primary);
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 a {
   color: var(--color-font-primary);   /* Pasar a variable */
@@ -304,20 +305,39 @@ button {
 }
 
 .fee-details-container{
-  width: 34vw;
-  min-width: 280px;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  right: -100%;
+  z-index: 11;
+  background-color: white;
+  width: 100%;
+  max-width: 450px;
+  transition: right .2s ease;
 }
-
 .fee-details-container__title{
   font-size: 1.1rem;
   font-weight: 900;
 }
-
+.showFeeDetailsContainer {
+  right: 0;
+}
+@media (min-width: 768px){
+  .fee-details-container{
+  width: 25vw;
+  height: 100vh;
+  min-width: 280px;
+  position: absolute;
+  transition-duration: 0s;
+  }
+  .showFeeDetailsContainer {
+    position: relative;
+  }
+}
 .fee-main{
   overflow-y: auto;
-  height: 100vh;
+  max-height: 100vh;
 }
 .fee-details-container{
   border-left: 1px solid gainsboro;

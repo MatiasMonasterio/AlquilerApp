@@ -13,3 +13,18 @@ sidebarDerparmentsButton.addEventListener('click', () =>{
     departmentListBox.classList.toggle('deparment-list-show');
     sidebarDerparmentsButton.classList.toggle('sidebar__department-button');
 });
+
+
+
+
+
+const feeButtonList = document.querySelectorAll('[data-button]');
+feeButtonList.forEach( element => {
+    element.addEventListener('click', () =>{
+        feeDetailsContainer.classList.add('showFeeDetailsContainer');
+    });
+})
+
+feeDetailsButton.addEventListener('click', () => {
+    feeDetailsContainer.classList.remove('showFeeDetailsContainer');
+});
