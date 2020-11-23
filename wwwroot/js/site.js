@@ -2,3 +2,14 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+
+// SIDEBAR
+sidebarButton.addEventListener('click', () => {
+    sidebar.classList.toggle('sidebar-show-transition');
+});
+
+sidebarDerparmentsButton.addEventListener('click', () =>{
+    departmentListBox.classList.toggle('deparment-list-show');
+    sidebarDerparmentsButton.classList.toggle('sidebar__department-button');
+});
