@@ -6,6 +6,7 @@
 
 // SIDEBAR
 sidebarButton.addEventListener('click', () => {
+    const sidebar = document.querySelector('#sidebar');
     sidebar.classList.toggle('sidebar-show-transition');
 });
 
@@ -15,7 +16,9 @@ sidebarDerparmentsButton.addEventListener('click', () =>{
 });
 
 
-
+deparmetnOptions.addEventListener('click', () => {
+    deparmetnOptionsDropdown.classList.toggle('d-flex')
+});
 
 
 const feeButtonList = document.querySelectorAll('[data-button]');
@@ -27,4 +30,10 @@ feeButtonList.forEach( element => {
 
 feeDetailsButton.addEventListener('click', () => {
     feeDetailsContainer.classList.remove('showFeeDetailsContainer');
+});
+
+
+paidDropdownButton.addEventListener('click', () => {
+    paidDropdownContainer.classList.toggle('d-none');
+    paidDropdownButton.classList.toggle('deparment-container-expand')
 });
