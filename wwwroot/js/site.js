@@ -3,37 +3,66 @@
 
 // Write your JavaScript code.
 
+// DEPARTAMENT INFO REGISTER
+if( typeof addDeparment != "undefined" ){
+    let cantDepto = 1;
+
+    addDeparment.addEventListener('click', () => {
+        const ElementToRepeat = document.querySelector('#deparmentForm').firstElementChild;
+        const cloneElement = ElementToRepeat.cloneNode(true);
+    
+        cantDepto += 1;
+        cloneElement.firstElementChild.innerText = `Departamento 0${ cantDepto }`;
+        
+        deparmentForm.insertBefore( cloneElement , addDeparment );
+    });
+}
+
 
 // SIDEBAR
-sidebarButton.addEventListener('click', () => {
-    const sidebar = document.querySelector('#sidebar');
-    sidebar.classList.toggle('sidebar-show-transition');
-});
-
-sidebarDerparmentsButton.addEventListener('click', () =>{
-    departmentListBox.classList.toggle('deparment-list-show');
-    sidebarDerparmentsButton.classList.toggle('sidebar__department-button');
-});
-
-
-deparmetnOptions.addEventListener('click', () => {
-    deparmetnOptionsDropdown.classList.toggle('d-flex')
-});
-
-
-const feeButtonList = document.querySelectorAll('[data-button]');
-feeButtonList.forEach( element => {
-    element.addEventListener('click', () =>{
-        feeDetailsContainer.classList.add('showFeeDetailsContainer');
+if( typeof sidebarButton != "undefined" ){
+    sidebarButton.addEventListener('click', () => {
+        const sidebar = document.querySelector('#sidebar');
+        sidebar.classList.toggle('sidebar-show-transition');
     });
-})
+    
+    sidebarDerparmentsButton.addEventListener('click', () =>{
+        departmentListBox.classList.toggle('deparment-list-show');
+        sidebarDerparmentsButton.classList.toggle('sidebar__department-button');
+    });
+}
 
-feeDetailsButton.addEventListener('click', () => {
-    feeDetailsContainer.classList.remove('showFeeDetailsContainer');
-});
+
+// DEPARTMENT PAGE
+if( typeof deparmetnOptions != "undefined" ){
+    deparmetnOptions.addEventListener('click', () => {
+        deparmetnOptionsDropdown.classList.toggle('d-flex')
+    });
+
+    const feeButtonList = document.querySelectorAll('[data-button]');
+    feeButtonList.forEach( element => {
+        element.addEventListener('click', () =>{
+            feeDetailsContainer.classList.add('showFeeDetailsContainer');
+        });
+    });
+
+    feeDetailsButton.addEventListener('click', () => {
+        feeDetailsContainer.classList.remove('showFeeDetailsContainer');
+    });
+
+    paidDropdownButton.addEventListener('click', () => {
+        paidDropdownContainer.classList.toggle('d-none');
+        paidDropdownButton.classList.toggle('deparment-container-expand')
+    });
+}
 
 
-paidDropdownButton.addEventListener('click', () => {
-    paidDropdownContainer.classList.toggle('d-none');
-    paidDropdownButton.classList.toggle('deparment-container-expand')
-});
+
+
+
+
+
+
+
+
+

@@ -2,40 +2,43 @@
     ViewData["Title"] = "Crear Cuenta Propietario";
     Layout = "_LayoutLogin";
 }
+<div class="bg-light">
+    <div class="register-container container w-100 d-flex min-vh-100 flex-column align-items-center justify-content-center pt-3 pt-md-5">
+        <div class="d-flex register__tab text-center justify-content-around w-100 border-bottom position-relative mb-3 mb-md-4">
+            <p class=" w-50">Cuenta</p>
+            <p class="w-50  register__tab-selected position-relative">Departamentos</p>
+        </div>
 
-<div class="register-container d-flex vh-100 flex-column align-items-center justify-content-center container position-relative">
-    <div class="d-flex position-absolute register__tab text-center justify-content-around w-75 border-bottom position-relative">
-        <p class=" w-50">Cuenta</p>
-        <p class="w-50  register__tab-selected position-relative">Departamentos</p>
-    </div>
+        <form action="" class="col-12 col-lg-7 d-flex flex-column register-form mb-5" id="deparmentForm">
+            <div class="deparment-info-container mt-5">
+                <h2 class="form-title">Departamento 01</h2>
+                <label for="adress" class="position-relative w-100 mb-2">
+                    <p class="d-inline">Dirección</p>
+                    <input type="text" id="adress" placeholder="Ingrese Dirección" class="form-control" autocomplete="off">
+                </label>
 
-    <form action="" class="w-50 d-flex flex-column">
-        <h2 class="form-title">Departamento 01</h2>
-        <label for="adress" class="position-relative w-100 mb-2">
-            <p class="d-inline">Dirección</p>
-            <input type="text" id="adress" placeholder="Ingrese Dirección" class="form-control" autocomplete="off">
-        </label>
+                <label for="number" class="position-relative w-100 mb-2">
+                    <p class="d-inline">Número</p>
+                    <input type="text" id="number" placeholder="Ingrese Numeración" class="form-control" autocomplete="off">
+                </label><!-- FORM GROUP -->
 
-        <label for="number" class="position-relative w-100 mb-2">
-            <p class="d-inline">Número</p>
-            <input type="text" id="number" placeholder="Ingrese Numeración" class="form-control" autocomplete="off">
-        </label><!-- FORM GROUP -->
+                <label for="depto" class="position-relative w-100 mb-2">
+                    <p class="d-inline">Piso y Departamento</p>
+                    <input type="text" id="depto" placeholder="Ingrese piso y departamento" class="form-control" autocomplete="off">
+                </label><!-- FORM GROUP -->
 
-        <label for="depto" class="position-relative w-100 mb-2">
-            <p class="d-inline">Piso y Departamento</p>
-            <input type="text" id="depto" placeholder="Ingrese piso y departamento" class="form-control" autocomplete="off">
-        </label><!-- FORM GROUP -->
+                <label for="location" class="position-relative w-100 mb-2">
+                    <p class="d-inline">Localidad</p>
+                    <input type="text" id="location" placeholder="Ingrese localidad" class="form-control" autocomplete="off">
+                </label><!-- FORM GROUP -->
+            </div>
 
-        <label for="location" class="position-relative w-100 mb-2">
-            <p class="d-inline">Localidad</p>
-            <input type="text" id="location" placeholder="Ingrese localidad" class="form-control" autocomplete="off">
-        </label><!-- FORM GROUP -->
+            <button type="button" class="btn-secundary ml-auto mt-2" id="addDeparment">Agregar otro departamento</button>
+        </form>
 
-        <button class="btn-secundary ml-auto">Agregar otro departamento</button>
-    </form>
-
-    <div class="register__button-container top-85 position-absolute w-100 mx-auto d-flex justify-content-between">
-        <a asp-controller="lessee" asp-action="RegisterAccountInfo" class="w-25 btn btn-outline-primary rounded-pill">Atras</a>
-        <a asp-controller="lessee" asp-action="dashboard" class="w-25 btn btn-primary rounded-pill">Finalizar</a>
+        <div class="register__button-container mt-auto mb-5 w-100 mx-auto d-flex justify-content-between">
+            <a asp-controller="lessee" asp-action="RegisterAccountInfo" class="col-5 col-md-3 btn btn-outline-primary rounded-pill">Atras</a>
+            <a asp-controller="lessee" asp-action="dashboard" class="col-5 col-md-3 btn btn-primary rounded-pill">Finalizar</a>
+        </div>
     </div>
 </div>

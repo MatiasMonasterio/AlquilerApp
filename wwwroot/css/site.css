@@ -136,8 +136,8 @@ button:focus-within{
 /*==============================================================================*/
 /*                                 Register                                  */
 /*==============================================================================*/
-.register__tab{
-  top: 10%;
+.register-container{
+  color: var(--gray);
 }
 
 .register__tab-selected::after{
@@ -154,6 +154,9 @@ button:focus-within{
 .form-title{
   font-weight: 800;
   font-size: 1.1rem;
+}
+.register-form{
+  flex: none;
 }
 
 /*==============================================================================*/
@@ -434,7 +437,7 @@ a{
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/assets/bg-login4.jfif');
+  background-image: url('/assets/ibrahim-rifath-qtV50uclwXw-unsplash.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -443,7 +446,7 @@ a{
 
 @media (min-width: 767px){
   .bg-login{
-    background-image: url('/assets/bg-login4.jfif');
+    background-image: url('/assets/ibrahim-rifath-qtV50uclwXw-unsplash.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -452,6 +455,6 @@ a{
     display: none;
   }
   .bg-light-login{
-    background-color:  rgba(52, 58, 64, 0.95);
+    background-color:  rgba(52, 58, 64, 0.9);
   }
 }
