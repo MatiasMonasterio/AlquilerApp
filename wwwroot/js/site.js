@@ -56,7 +56,12 @@ if( typeof deparmetnOptions != "undefined" ){
     });
 }
 
-
+// ACCOUNT
+if( typeof accountButtonEdit != "undefined" ){
+    accountButtonEdit.addEventListener('click', () => {
+        accountOptions.classList.toggle('d-flex');
+    });
+}
 
 
 

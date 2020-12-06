@@ -1,0 +1,44 @@
+@{
+    ViewBag.Renter = true;
+}
+
+<div class="settings-container settings p-md-5 pb-5 px-3 dashboard">
+    <h1 class="pb-2 pb-md-0 mb-md-4 title-main px-3 px-md-0 pt-5 pt-md-0">Configuraciones</h1>
+
+    <div class="settings__group mb-4 border-bottom pb-3">
+        <h3 class="secondary-title mb-3">Tema</h3>
+        <div class="mb-0 d-flex align-items-center mb-1">
+            <p class="m-0 col-11 col-md-8 col-lg-2 px-0 text-black-50">Tema Claro</p>
+            <input type="radio" class="input-radio ml-auto ml-md-0" name="theme" value="light" checked>
+        </div>
+        <div class="mb-0 d-flex align-items-center mb-1">
+            <p class="m-0 col-11 col-md-8 col-lg-2 px-0 text-black-50">Tema Oscuro</p>
+            <input type="radio" class="input-radio ml-auto ml-md-0" name="theme" value="dark">
+        </div>
+    </div>
+
+    <div class="settings__group mb-4 border-bottom pb-3">
+        <h3 class="secondary-title mb-3">Notificaciones Correo</h3>
+        <div class="d-flex align-items-center mb-1">
+            <p class="m-0 col-10 col-md-8 col-lg-2 px-0 text-black-50">Alerta Cuota Emitida</p>
+            <input type="checkbox" name="toggle" class="input-toggle ml-auto ml-md-0" checked>
+            <span class="mb-0 ml-2 d-none d-md-block">Activado</span>
+        </div>
+        <div class="d-flex align-items-center mb-1">
+            <p class="m-0 col-10 col-md-8 col-lg-2 px-0 text-black-50">Alerta Cuota Vencida</p>
+            <input type="checkbox" name="toggle" class="input-toggle ml-auto ml-md-0" checked>
+            <span class="mb-0 ml-2 d-none d-md-block">Activado</span>
+        </div>
+        <div class="d-flex align-items-center mb-1">
+            <p class="m-0 col-10 col-md-8 col-lg-2 px-0 text-black-50">Comprobante de Pago</p>
+            <input type="checkbox" name="toggle" class="input-toggle ml-auto ml-md-0">
+            <span class="mb-0 ml-2 d-none d-md-block">Desactivado</span>
+        </div>
+    </div>
+
+    <div class="settings__group mb-4 border-bottom pb-3">
+        <h3 class="secondary-title mb-3">Ayuda y Comentarios</h3>
+        <a href="#" class="mb-0 d-inline-block text-black-50 link-light mb-1">Enviar sugerencia</a> <br>
+        <a href="#" class="mb-0 d-inline-block text-black-50 link-light">Reportar problema</a>
+    </div>
+</div>

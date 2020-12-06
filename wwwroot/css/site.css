@@ -86,6 +86,7 @@ button:focus-within{
 
 .btn-secundary:hover{
   text-decoration: underline;
+  color: var(--primary-color-light);
 }
 
 .form-control{
@@ -119,8 +120,73 @@ button:focus-within{
     position: relative;
     line-height: initial;
   }
+  .link-light:hover{
+    text-decoration: underline;
+  }
 }
 
+.footer{
+  font-size: .85rem;
+}
+
+.input-form{
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  display: block;
+  outline: transparent;
+  padding: 5px 0;
+  position: relative;
+  width: 100%;
+}
+.input-form:focus-within{
+  border-bottom: 1px solid var(--green-light);
+}
+
+.input-toggle {
+  -webkit-appearance: none;
+  width: 2.1rem;
+  height: 1.2rem;
+  border-radius: 100px;
+  border: 1px solid var(--secondary);
+  position: relative;
+  outline: none;
+  transition: all .1s ease;
+  cursor: pointer;
+}
+.input-toggle::before {
+  content: "";
+  position: absolute;
+  left: 1.5px;
+  top: 1.5px;
+  border-radius: 100px;
+  width: .9rem;
+  height: .9rem;
+  background-color: var(--secondary);
+  transition: all .1s ease;
+}
+.input-toggle:checked {
+  background-color: var(--green);
+  border: 1px solid var(--green);
+}
+.input-toggle:checked::before {
+  background-color: var(--white);
+  right: 1.5px;
+  left: auto;
+}
+
+.input-radio{
+  -webkit-appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 6px solid var(--secondary);
+  border-radius: 100%;
+  cursor: pointer;
+  outline: none;
+}
+.input-radio:checked{
+  border: 6px solid var(--green);
+}
 /*==============================================================================*/
 /*                                 User style                                   */
 /*==============================================================================*/
@@ -185,11 +251,23 @@ button:focus-within{
   list-style: none;
 }
 .sidebar-link{
+  position: relative;
   padding: 8px 16px;
   display: inline-block;
   width: 100%;
   background-color: transparent;
   color: inherit;
+}
+.sidebar-link-selected::after{
+  content: '';
+  display: block;
+  position: absolute;
+  height: 3rem;
+  width: 4px;
+  background-color: var(--green);
+  top: 0;
+  left: 0;
+  z-index: 20;
 }
 .sidebar-item{
   display: flex;
@@ -261,8 +339,19 @@ button:focus-within{
   }
 
   .sidebar-link:hover{
+    color: #ffff;
+  }
+
+  .sidebar-link:hover::after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 3rem;
+    width: 4px;
     background-color: var(--green);
-    color: var(--white);
+    top: 0;
+    left: 0;
+    z-index: 20;
   }
 
   .sidebar-link{
@@ -275,7 +364,7 @@ button:focus-within{
 .dashboard {
   overflow-y: auto;
   max-height: 100vh;
-  margin-top: 100px;
+  padding-top: 100px;
 }
 .card{
   border: none;
@@ -410,8 +499,9 @@ button:focus-within{
   height: fill-available; */
 }
 .secondary-title{
-  font-size: 15px;
-  font-weight: 900;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--green);
 }
 .footer{
   font-size: 13px;
