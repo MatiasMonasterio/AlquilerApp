@@ -119,6 +119,7 @@ button:focus-within{
     font-size: 1.3rem;
     position: relative;
     line-height: initial;
+    background-color: transparent;
   }
   .link-light:hover{
     text-decoration: underline;
@@ -132,7 +133,7 @@ button:focus-within{
 .input-form{
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid rgba(0,0,0,.2);
+  border-bottom: 2px solid rgba(0,0,0,.2);
   display: block;
   outline: transparent;
   padding: 5px 0;
@@ -140,9 +141,11 @@ button:focus-within{
   width: 100%;
 }
 .input-form:focus-within{
-  border-bottom: 1px solid var(--green-light);
+  border-bottom: 2px solid var(--green-light);
 }
-
+.input-form:valid {
+  border-bottom: 2px solid var(--green-light);
+}
 .input-toggle {
   -webkit-appearance: none;
   width: 2.1rem;
@@ -186,6 +189,15 @@ button:focus-within{
 }
 .input-radio:checked{
   border: 6px solid var(--green);
+}
+.vh-100{
+  height: calc(var(--vh)) !important;
+}
+.min-vh-100{
+  min-height: calc(var(--vh)) !important;
+}
+.max-vh-100{
+  max-height: calc(var(--vh)) !important;
 }
 /*==============================================================================*/
 /*                                 User style                                   */
@@ -243,9 +255,13 @@ button:focus-within{
 .sidebar-show-transition{
   left: 0;
 }
+.sidebar-show-transition .sidebar-button{
+  color: var(--white);
+}
 .sidebar-button{
   position: fixed;
   left: 0;
+  color: var(--gray);
 }
 .sidebar-list{
   list-style: none;
@@ -282,6 +298,12 @@ button:focus-within{
   transition: opacity .03s ease;
   transition-delay: initial;
 }
+.department__link{
+  color: var(--gray);
+}
+.department__link:hover{
+  color: var(--green-light);
+}
 .department-list {
   overflow-y: hidden;
   position: absolute;
@@ -299,6 +321,9 @@ button:focus-within{
   top: 6rem;
 }
 @media (min-width: 768px){
+  .sidebar-button{
+    color: var(--white);
+  }
   .department-options-container{
     position: absolute;
     right: 3rem;
@@ -365,6 +390,7 @@ button:focus-within{
   overflow-y: auto;
   max-height: 100vh;
   padding-top: 100px;
+  min-height: calc(var(--vh));
 }
 .card{
   border: none;
@@ -462,7 +488,7 @@ button:focus-within{
 }
 .fee-main{
   overflow-y: auto;
-  max-height: 100vh;
+  height: 100vh;
 }
 .fee-details-container{
   border-left: 1px solid gainsboro;

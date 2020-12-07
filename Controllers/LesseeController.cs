@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace AlquilerApp.Controllers
 {
@@ -6,6 +7,8 @@ namespace AlquilerApp.Controllers
     {
         public LesseeController()
         { }
+
+        // PATH
         public IActionResult index()
         {
             return View();
@@ -56,9 +59,67 @@ namespace AlquilerApp.Controllers
             return View();
         }
 
+        public IActionResult Account()
+        {
+            return View();
+        }
+
         public IActionResult Settings()
         {
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            return RedirectToAction("Login");
+        }
+
+        public IActionResult UpdateUserInfo()
+        {
+            return View();
+        }
+
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
+        
+        public IActionResult UpdateContract()
+        {
+            return View();
+        }
+
+        public IActionResult SaveNewPassword()
+        {
+            return RedirectToAction("Account");
+        }
+
+        public IActionResult SaveUserInfo()
+        {
+            return RedirectToAction("Account");
+        }
+
+        public IActionResult saveContractInfo()
+        {
+            return RedirectToAction("Account");
+        }
+
+        public IActionResult AddRenter()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult createNewRenter(
+            string name, string lastname, string email, string telephone,
+            string dateStart, string dateEnd, string amount
+        ){
+            if( email != "" )
+            {
+                Console.WriteLine($"El nombre es: {name}");
+            }
+            
+            return RedirectToAction("Department", new{id = 2});
         }
     }
 }

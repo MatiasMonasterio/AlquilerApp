@@ -1,0 +1,64 @@
+@{
+    ViewBag.Renter = false;
+}
+
+<div class="w-100 p-md-5 pb-5 px-3 fee-main dashboard">
+    <h1 class="pb-2 pb-md-0 mb-md-4 mb-2 title-main d-flex align-items-center px-3 px-md-0 pt-5 pt-md-0 mx-0">Agregar Inquilino</h1>
+
+    <form asp-controller="lessee" asp-action="createNewRenter" method="POST" class="col-lg-8 col-md-10 col-12 px-0 d-flex flex-column">
+        <div class="user-info mb-5">
+            <h3 class="secondary-title mb-4">Datos personales</h3>
+            <div class="form-group">
+                <label class="w-100 mb-2">
+                    <p class="text-black-50 mb-0">Nombre</p>
+                    <input class="input-form" type="text" name="name" placeholder="Ingrese el nombre" required>
+                </label><!-- FROM LABEL -->
+            </div><!-- FROM GROUP -->
+            <div class="form-group">
+                <label class="w-100 mb-2">
+                    <p class="text-black-50 mb-0">Apellido</p>
+                    <input class="input-form" type="text" name="lastname" placeholder="Ingrese el apellido" required>
+                </label><!-- FROM LABEL -->
+            </div><!-- FROM GROUP -->
+            <div class="form-group">
+                <label class="w-100 mb-2">
+                    <p class="text-black-50 mb-0">Correo</p>
+                    <input class="input-form" type="text" name="email" placeholder="Ingrese el correo" required>
+                </label><!-- FROM LABEL -->
+            </div><!-- FROM GROUP -->
+            <div class="form-group">
+                <label class="w-100 mb-2">
+                    <p class="text-black-50 mb-0">Telefono</p>
+                    <input class="input-form" type="text" name="telephone" placeholder="Ingrese el numero de telefon" required>
+                </label><!-- FROM LABEL -->
+            </div><!-- FROM GROUP -->
+        </div><!-- USER INFO -->
+
+        <div class="contract-info">
+            <h3 class="secondary-title mb-4">Datos Contrato</h3>
+            <div class="form-group">
+                <label class="w-100 mb-2">
+                    <p class="text-black-50 mb-0">Fecha Ingreso</p>
+                    <input class="input-form" type="date" name="dateStart" required>
+                </label><!-- FROM LABEL -->
+            </div><!-- FROM GROUP -->
+
+            <div class="form-group">
+                <label class="w-100 mb-2">
+                    <p class="text-black-50 mb-0">Fecha Egreso</p>
+                    <input class="input-form" type="date" name="dateEnd" required>
+                </label><!-- FROM LABEL -->
+            </div><!-- FROM GROUP -->
+
+            <div class="form-group">
+                <label class="w-100 mb-2">
+                    <p class="text-black-50 mb-0">Monto total</p>
+                    <input class="input-form" type="text" name="amount" placeholder="Ingrese el monto total" required>
+                </label><!-- FROM LABEL -->
+            </div><!-- FROM GROUP -->
+        </div>
+
+
+        <input type="submit" value="Agregar" class="btn-primary px-4 py-1 ml-auto rounded-pill">
+    </form><!-- FROM -->
+</div>

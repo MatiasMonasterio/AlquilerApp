@@ -3,6 +3,13 @@
 
 // Write your JavaScript code.
 
+const heightFixed = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty('--vh', `${window.innerHeight}px`);
+}
+heightFixed();
+window.addEventListener('resize', heightFixed)
+
 // DEPARTAMENT INFO REGISTER
 if( typeof addDeparment != "undefined" ){
     let cantDepto = 1;
