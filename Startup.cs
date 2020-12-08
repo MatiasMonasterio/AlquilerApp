@@ -29,6 +29,14 @@ namespace AlquilerApp
 
             services.AddDbContext<AppDbContext>(options => 
             options.UseSqlite(Configuration.GetConnectionString("DbConnection")));
+
+            services.AddSession(options =>
+            {
+                // options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.Name = ".AlquilerApp.Session";
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,11 +59,13 @@ namespace AlquilerApp
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=User}/{action=Index}/{id?}");
+                    pattern: "{controller=User}/{action=Index}");
             });
         }
     }
