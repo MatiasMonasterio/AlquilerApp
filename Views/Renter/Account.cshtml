@@ -1,6 +1,5 @@
-@{
-    ViewBag.Renter = true;
-}
+@using System.Globalization;
+@{ ViewBag.Renter = true; }
 
 <div class="w-100 p-md-5 pb-5 px-3 fee-main dashboard position-relative">
     <h1 class="pb-2 pb-md-0 mb-md-4 mb-2 title-main d-flex align-items-center px-3 px-md-0 pt-5 pt-md-0 mx-0">
@@ -32,17 +31,17 @@
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Nombre</span>
-            <p class="p-0 col m-0">Matias Monasterio</p>
+            <p class="p-0 col m-0">@ViewBag.User.Name @ViewBag.User.Lastname</p>
         </div>
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Correo</span>
-            <p class="p-0 col m-0">matias_monasterio@outlook.com</p>
+            <p class="p-0 col m-0">@ViewBag.User.Email</p>
         </div>
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Telefono</span>
-            <p class="p-0 col m-0">(011) 15-34540195</p>
+            <p class="p-0 col m-0">@ViewBag.User.Telephone</p>
         </div>
 
         <div class="d-md-flex d-block mb-2">
@@ -51,17 +50,51 @@
         </div>
     </div>
 
-    <div class="mb-4 border-bottom">
+    <div class="mb-5 border-bottom">
         <h3 class="secondary-title mb-3">Datos Contrato</h3>
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Fecha Inicio</span>
-            <p class="p-0 col m-0">01 Octubre 2020</p>
+            <p class="p-0 col m-0">@ViewBag.Contract.InitialDate.ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))</p>
         </div>
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Fecha Cierre</span>
-            <p class="p-0 col m-0">01 Octubre 2022</p>
+            <p class="p-0 col m-0">@ViewBag.Contract.finishDate.ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))</p>
         </div>
     </div>
+
+    <div class="mb-5 border-bottom">
+        <h3 class="secondary-title mb-3">Departamento</h3>
+
+        <div class="d-md-flex d-block mb-2">
+            <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Direccion</span>
+            <p class="p-0 col m-0">@ViewBag.Department.Address @ViewBag.Department.Number</p>
+        </div>
+
+        <div class="d-md-flex d-block mb-2">
+            <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Localidad</span>
+            <p class="p-0 col m-0">@ViewBag.Department.Town, @ViewBag.Department.provincia</p>
+        </div>
+
+        <div class="d-md-flex d-block mb-2">
+            <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Antiguedad</span>
+            <p class="p-0 col m-0">@ViewBag.Department.age años</p>
+        </div>
+
+        <div class="d-md-flex d-block mb-2">
+            <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Ambientes</span>
+            <p class="p-0 col m-0">2</p>
+        </div>
+
+        <div class="d-md-flex d-block mb-2">
+            <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Expensas</span>
+            <p class="p-0 col m-0">No incluye</p>
+        </div>
+
+        <div class="d-md-flex d-block mb-2">
+            <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Descripcción</span>
+            <p class="p-0 col m-0">@ViewBag.Department.description</p>
+        </div>
+
 </div>

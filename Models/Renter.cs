@@ -18,6 +18,8 @@ namespace AlquilerApp.Models
         public string Telephone { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public bool Active { get; set; }
 
 
         // Configuraciones, no estoy seguro de dejarlas aca

@@ -200,7 +200,12 @@ namespace AlquilerApp.Controllers
                     Lastname = lastname,
                     Email = email,
                     Telephone = telephone,
-                    Password = "12345678"
+                    Password = "12345678",
+                    Active = false,
+                    Theme = true,
+                    FeeEmitAlert = true,
+                    FeeOverdueAlert = true,
+                    PaymentTicket = true
                 };
 
                 db.Renter.Add( NewRenter );
@@ -269,6 +274,7 @@ namespace AlquilerApp.Controllers
             Contract ContractToRedirect = db.Contract.Where( cont => cont.RenterId == Renter ).First();
 
             ResetPasswordRenter.Password = "11111111";
+            ResetPasswordRenter.Active = false;
             db.SaveChanges();
 
             return RedirectToAction("Department", new{id = ContractToRedirect.DepartmentId });

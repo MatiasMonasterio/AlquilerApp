@@ -1,6 +1,5 @@
-@{
-    ViewBag.Renter = true;
-}
+@using System.Globalization;
+@{ ViewBag.Renter = true; }
 
 <div class="d-flex">
     <div class="w-100 p-md-5 pb-5 px-3 fee-main dashboard position-relative">
@@ -44,51 +43,21 @@
         </button>
 
         <div class="fee-container col-12 p-0 mb-5" id="feebox">
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 05</h5>
+            @foreach (var fee in @ViewBag.FeesPending)
+            {
+            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1" data-fee-itemid=@fee.Id>
+                <h5 class="m-0 deparment-card__fee">Cuota @fee.Id.ToString("D2")</h5>
                 <span class="m-0 deparment-card__date d-flex align-items-center">
                     <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                         <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
                     </svg>
-                    Jue, 10 de Septiembre
+                    <span class="text-capitalize">@fee.ExpiryDate.ToString("ddd d 'de' MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))</span>
                 </span>
             </button>
-
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 06</h5>
-                <span class="m-0 deparment-card__date d-flex align-items-center">
-                    <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-                    </svg>
-                    Jue, 10 de Septiembre
-                </span>
-            </button>
-
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 07</h5>
-                <span class="m-0 deparment-card__date d-flex align-items-center">
-                    <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-                    </svg>
-                    Jue, 10 de Septiembre
-                </span>
-            </button>
-
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 08</h5>
-                <span class="m-0 deparment-card__date d-flex align-items-center">
-                    <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-                    </svg>
-                    Jue, 10 de Septiembre
-                </span>
-            </button>
-
+            }
         </div>
+
 
         <button type="button" class="mb-2 btn-fee-show d-block" id="paidDropdownButton">
             Pagadas
@@ -97,49 +66,19 @@
             </svg>
         </button>
         <div class="fee-container col-12 p-0 mb-5" id="paidDropdownContainer">
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 01</h5>
+            @foreach (var fee in @ViewBag.FeesPaid)
+            {
+            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1" data-fee-itemid=@fee.Id>
+                <h5 class="m-0 deparment-card__fee">Cuota @fee.Id.ToString("D2")</h5>
                 <span class="m-0 deparment-card__date d-flex align-items-center">
                     <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                         <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
                     </svg>
-                    Jue, 10 de Septiembre
+                    <span class="text-capitalize">@fee.ExpiryDate.ToString("ddd d 'de' MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))</span>
                 </span>
             </button>
-
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 02</h5>
-                <span class="m-0 deparment-card__date d-flex align-items-center">
-                    <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-                    </svg>
-                    Jue, 10 de Septiembre
-                </span>
-            </button>
-
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 03</h5>
-                <span class="m-0 deparment-card__date d-flex align-items-center">
-                    <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-                    </svg>
-                    Jue, 10 de Septiembre
-                </span>
-            </button>
-
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 04</h5>
-                <span class="m-0 deparment-card__date d-flex align-items-center">
-                    <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-                    </svg>
-                    Jue, 10 de Septiembre
-                </span>
-            </button>
+            }
         </div>
 
     </div>
@@ -166,16 +105,7 @@
         </div>
 
 
-
-        <button type="button" class="fee-details__button container m-0 py-3 mt-auto" data-toggle="modal" data-target="#exampleModal">
-            <svg class="fee-details__button-icon"  viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
-            Agregar adicional
-        </button>
-
-        <button type="button" class="fee-details__button container m-0 py-3">
+        <button type="button" class="fee-details__button container m-0 mt-auto py-3">
             <svg class="fee-details__button-icon"  viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                 <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
@@ -183,24 +113,4 @@
             Descargar comprobante
         </button>
     </div>
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
