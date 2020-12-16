@@ -15,5 +15,11 @@ namespace AlquilerApp.Controllers
             var value = session.GetString( key );
             return value == null ? default : JsonSerializer.Deserialize<T>(value);
         }
+
+        public static bool Exist<T>( this ISession session, string key )
+        {
+            var SessionExist = session.GetString( key );
+            return SessionExist == null ? false : true;
+        }
     }
 }
