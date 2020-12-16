@@ -1,27 +1,27 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace AlquilerApp.Models
 {
     public class Contract
     {
         [Key]
-        [ForeignKey("Lessee")]
-        public long LesseeId { get; set; }
-        public Lessee Lessee { get; set; }
+        public long Id { get; set; }
+        [Required]
+        public DateTime InitialDate { get; set; }
+        [Required]
+        public DateTime finishDate { get; set; }
+        [Required]
+        public int amount { get; set; }
+        [Required]
+        public List<Fee> Fees { get; set; }
 
-        [Key]
+
         [ForeignKey("Department")]
         public long DepartmentId { get; set; }
-        public Department Department { get; set; }
-        
-
         [ForeignKey("Renter")]
         public long RenterId { get; set; }
-        [Required]
-        public Renter Renter { get; set; }
-
-        public DateTime InitialDate { get; set; }
     }
 }

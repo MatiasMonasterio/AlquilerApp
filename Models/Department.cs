@@ -23,8 +23,8 @@ namespace AlquilerApp.Models
         public string description { get; set; }
 
 
+        [Required]
         [ForeignKey("Lessee")]
         public long LesseeId { get; set; }
-        public Lessee Lesse { get; set; }
     }
 }
