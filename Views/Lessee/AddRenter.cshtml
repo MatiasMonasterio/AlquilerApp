@@ -8,6 +8,7 @@
     <form asp-controller="lessee" asp-action="createNewRenter" method="POST" class="col-lg-8 col-md-10 col-12 px-0 d-flex flex-column">
         <div class="user-info mb-5">
             <h3 class="secondary-title mb-4">Datos personales</h3>
+            <input type="hidden" name="departmentId" value=@ViewBag.DepartmentId>
             <div class="form-group">
                 <label class="w-100 mb-2">
                     <p class="text-black-50 mb-0">Nombre</p>

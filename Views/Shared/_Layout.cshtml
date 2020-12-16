@@ -106,10 +106,13 @@
                     </li>
 
                     <div class="department-list py-3 px-4 bg-light" id="departmentListBox">
-                        <li class="department__item ml-5"><a asp-controller="lessee" asp-action="department" asp-route-id="1" class="department__link py-2 d-inline-block">Departamento 01</a></li>
-                        <li class="department__item ml-5"><a asp-controller="lessee" asp-action="department" asp-route-id="1" class="department__link py-2 d-inline-block">Departamento 02</a></li>
+                        @* @foreach (var department in ViewBag.DepartmentList)
+                        {
+                        <li class="department__item ml-5"><a asp-controller="lessee" asp-action="department" asp-route-id=@department.id class="department__link py-2 d-inline-block">Departamento @department.id.ToString("D2")</a></li>
+                        } *@
+                        @* <li class="department__item ml-5"><a asp-controller="lessee" asp-action="department" asp-route-id="1" class="department__link py-2 d-inline-block">Departamento 02</a></li>
                         <li class="department__item ml-5"><a asp-controller="lessee" asp-action="department" asp-route-id="1" class="department__link py-2 d-inline-block">Departamento 03</a></li>
-                        <li class="department__item ml-5"><a asp-controller="lessee" asp-action="department" asp-route-id="1" class="department__link py-2 d-inline-block">Departamento 04</a></li>
+                        <li class="department__item ml-5"><a asp-controller="lessee" asp-action="department" asp-route-id="1" class="department__link py-2 d-inline-block">Departamento 04</a></li> *@
                     </div>
 
                     <li class="sidebar-item">

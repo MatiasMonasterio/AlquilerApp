@@ -6,10 +6,12 @@
     <h1 class="pb-2 pb-md-0 mb-md-4 mb-2 title-main px-3 px-md-0 pt-5 pt-md-0">Dashboard</h1>
 
     <div class="row mx-0 w-100 m-0 p-0">
-        <a asp-controller="lessee" asp-action="department" asp-route-id="1" class="col-12 col-md-6 p-md-2 py-2 px-0">
+        @foreach (var department in @ViewBag.DepartmentsList)
+        {
+        <a asp-controller="lessee" asp-action="department" asp-route-id="@department.Id" class="col-12 col-md-6 p-md-2 py-2 px-0">
             <div class="card w-100 p-3">
                 <header class="department-card__header mb-2">
-                    <h5 class="card-title mb-0">Departamento 01</h5>
+                    <h5 class="card-title mb-0">Departamento @department.Id.ToString("D2")</h5>
                     <span class="card-username">Monasterio Matías</span>
                 </header>
                 <div class="card-body p-0">
@@ -19,47 +21,6 @@
                 </div>
             </div>
         </a>
-
-        <a asp-controller="lessee" asp-action="department" asp-route-id="1" class="col-12 col-md-6 p-md-2 py-2 px-0">
-            <div class="card w-100 p-3">
-                <header class="department-card__header mb-2">
-                    <h5 class="card-title mb-0">Departamento 01</h5>
-                    <span class="card-username">Monasterio Matías</span>
-                </header>
-                <div class="card-body p-0">
-                    <p class="card-text m-0">Venicimiento 10/11</p>
-                    <p class="card-text m-0">Monto $15000</p>
-                    <p class="card-text m-0">Estado pendiente</p>
-                </div>
-            </div>
-        </a>
-
-        <a asp-controller="lessee" asp-action="department" asp-route-id="1" class="col-12 col-md-6 p-md-2 py-2 px-0">
-            <div class="card w-100 p-3">
-                <header class="department-card__header mb-2">
-                    <h5 class="card-title mb-0">Departamento 01</h5>
-                    <span class="card-username">Monasterio Matías</span>
-                </header>
-                <div class="card-body p-0">
-                    <p class="card-text m-0">Venicimiento 10/11</p>
-                    <p class="card-text m-0">Monto $15000</p>
-                    <p class="card-text m-0">Estado pendiente</p>
-                </div>
-            </div>
-        </a>
-
-        <a asp-controller="lessee" asp-action="department" asp-route-id="1" class="col-12 col-md-6 p-md-2 py-2 px-0">
-            <div class="card w-100 p-3">
-                <header class="department-card__header mb-2">
-                    <h5 class="card-title mb-0">Departamento 01</h5>
-                    <span class="card-username">Monasterio Matías</span>
-                </header>
-                <div class="card-body p-0">
-                    <p class="card-text m-0">Venicimiento 10/11</p>
-                    <p class="card-text m-0">Monto $15000</p>
-                    <p class="card-text m-0">Estado pendiente</p>
-                </div>
-            </div>
-        </a>
+        }
     </div>
 </div>

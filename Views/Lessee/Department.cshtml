@@ -1,3 +1,4 @@
+@using System.Globalization;
 @{
     ViewBag.Renter = false;
 }
@@ -5,7 +6,7 @@
 <div class="d-flex">
     <div class="w-100 p-md-5 pb-5 px-3 fee-main dashboard position-relative">
         <h1 class="pb-2 pb-md-0 mb-md-4 mb-2 title-main d-flex align-items-center px-3 px-md-0 pt-5 pt-md-0 mx-0">
-            Departamento 01
+            Departament @ViewBag.Department.Id.ToString("D2")
             <button class="ml-auto bg-transparent border-0 pl-3" id="deparmetnOptions">
                 <svg width="1.5rem" height="1.5rem" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
@@ -14,12 +15,23 @@
         </h1>
 
         <div class="department-options-container shadow rounded flex-column d-none" id="deparmetnOptionsDropdown">
-            <a href="" class="department-options__link p-3 px-4">
+            <a asp-controller="Lessee" asp-action="UpdateDepartment" asp-route-id="@ViewBag.Department.Id" class="department-options__link p-3 px-4">
                 <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                 </svg>
                 Editar Datos
             </a>
+            @if(ViewBag.Fee == null)
+            {
+            <a asp-controller="lessee" asp-action="addrenter" asp-route-id="@ViewBag.Department.Id" class="department-options__link p-3 px-4">
+                <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                Agregar Inquilino
+            </a>
+            }
+            else
+            {
             <button class="department-options__link p-3 text-left px-4 bg-transparent border-0" data-toggle="modal" data-target="#exampleModal">
                 <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -27,40 +39,70 @@
                 </svg>
                 Restablecer Contraseña
             </button>
-            <button class="department-options__link p-3 text-left px-4 bg-transparent border-0" data-toggle="modal" data-target="#exampleModal">
+            <button class="department-options__link p-3 text-left px-4 bg-transparent border-0" data-toggle="modal" data-target="#deleteRenterModal">
                 <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                 </svg>
-                Eliminar Cuenta
+                Eliminar Usuario
             </button>
-            <a asp-controller="lessee" asp-action="addrenter" class="department-options__link p-3 px-4">
-                <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                </svg>
-                Agregar Inquilino
-            </a>
+            }
         </div>
+
+        @if(ViewBag.Fee == null)
+        {
+            <div class="alert alert-info" role="alert">
+                No hay datos cargado aún
+            </div>
+        }
+        else{
 
         <button type="button" class="mb-2 btn-fee-show" id="">
             Pendintes
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
             </svg>
-        </button>
+        </button> 
 
         <div class="fee-container col-12 p-0 mb-5" id="feebox">
-            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
-                <h5 class="m-0 deparment-card__fee">Cuota 05</h5>
+        @foreach (var fee in ViewBag.Fee)
+        {
+            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1" data-fee-itemid=@fee.Id>
+                <h5 class="m-0 deparment-card__fee">Cuota @fee.Id.ToString("D2")</h5>
                 <span class="m-0 deparment-card__date d-flex align-items-center">
                     <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                         <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
                     </svg>
-                    Jue, 10 de Septiembre
+                    <span class="text-capitalize">@fee.ExpiryDate.ToString("ddd d 'de' MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))</span>
                 </span>
             </button>
+        }
+        </div>
 
+        <button type="button" class="mb-2 btn-fee-show d-block" id="paidDropdownButton">
+            Pagadas
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+            </svg>
+        </button>
+        <div class="fee-container col-12 p-0 mb-5" id="paidDropdownContainer">
+        @foreach (var fee in ViewBag.FeePay)
+        {
+            <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1" data-fee-itemid=@fee.Id>
+                <h5 class="m-0 deparment-card__fee">Cuota @fee.Id.ToString("D2")</h5>
+                <span class="m-0 deparment-card__date d-flex align-items-center">
+                    <svg class="mr-1" width=".95em" height=".95em" viewBox="0 0 16 16" class="bi bi-calendar-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <span class="text-capitalize">@fee.ExpiryDate.ToString("ddd d 'de' MMMM yyyy", CultureInfo.CreateSpecificCulture("es-MX"))</span>
+                </span>
+            </button>
+        }
+        </div>
+
+@* 
             <button data-button="fee" type="button" class="deparment-card col-12 py-2 rounded mb-1">
                 <h5 class="m-0 deparment-card__fee">Cuota 06</h5>
                 <span class="m-0 deparment-card__date d-flex align-items-center">
@@ -146,10 +188,12 @@
                     Jue, 10 de Septiembre
                 </span>
             </button>
-        </div>
-
+        </div> *@
+        }
     </div>
 
+    @if(ViewBag.Fee != null)
+    {
     <div class="fee-details-container  pt-md-5 pb-md-0 pt-4 d-flex flex-column" id="feeDetailsContainer">
         <button class="ml-auto mx-4 mb-4 w-auto border-0 bg-transparent p-0" id="feeDetailsButton">
             <svg width="1.9em" height="1.9em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -168,12 +212,13 @@
 
         <div class="fee-details-container__submit confirm-container container px-4 text-right">
             <p class="confirm__text mb-2">Total $17700</p>
-            <button class="confirm__button btn-primary px-4 py-1 rounded-pill">Confirmar Pago</button>
+            @* INVESTIGAR MAS DE COMO ENLAZARLO *@
+            <a href="/lessee/confirmPayment?fee=1&contract=@ViewBag.Contract.Id" class="confirm__button btn-primary px-4 py-1 rounded-pill">Confirmar Pago</a>
         </div>
 
 
 
-        <button type="button" class="fee-details__button container m-0 py-3 mt-auto" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="fee-details__button container m-0 py-3 mt-auto" data-toggle="modal" data-target="#AddAmountModal">
             <svg class="fee-details__button-icon"  viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -189,24 +234,91 @@
             Descargar comprobante
         </button>
     </div>
+    }
 </div>
 
+@if(ViewBag.Fee != null)
+{
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <div class="modal-header border-0">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body d-flex flex-column align-items-center mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="8em" height="6em" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+            <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>
+        <p class="m-0 text-center px-2">
+            Esta acción restablecera la contraseña del inquilino,
+            la nueva contraseña la recibira por correo
+        </p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="modal-footer border-0 d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <a asp-controller="Lessee" asp-action="ResetPassword" asp-route-renter="@ViewBag.Contract.RenterId" type="button" class="btn btn-primary text-light">Restablecer</a>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="deleteRenterModal" tabindex="-1" aria-labelledby="deleteRenterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body d-flex flex-column align-items-center mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="6em" height="6em" fill="currentColor" class="bi bi-person-x" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm1.146-7.85a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+        </svg>
+        <p class="m-0 text-center px-2">
+            Esta a punto de eliminar esta cuenta. Esta seguro?
+        </p>
+      </div>
+      <div class="modal-footer border-0 d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <a asp-controller="Lessee" asp-action="DeleteRenter" asp-route-renter="@ViewBag.Contract.RenterId" type="button" class="btn btn-primary text-light">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="AddAmountModal" tabindex="-1" aria-labelledby="AddAmountModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mb-3 pt-2">
+          <form action="" method="POST" class="d-flex flex-column align-items-center" >
+                <h5>Agregar Adicional</h5>
+                <p class="text-center mb-5 w-75">
+                    El adicional que se defina solo se
+                    agregará a la cuota actual
+                </p>
+
+                <label class="d-block w-100 px-2 mb-3">
+                  <span>Seleccione motivo</span>
+                  <input type="text" class="input-form" name="description" placeholder="Ingrese el motivo">
+                </label>
+
+                <label class="d-block w-100 px-2 mb-5">
+                    <span>Monto</span>
+                    <input type="text" class="input-form" name="amount" placeholder="Ingrese el monto">
+                </label>
+
+                <input type="submit" class="btn btn-primary text-light ml-auto" value="Agregar">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+}

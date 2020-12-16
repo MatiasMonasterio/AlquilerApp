@@ -25,20 +25,20 @@
             </svg>
             Cambiar Contraseña
         </a>
-        <a asp-controller="lessee" asp-action="updatecontract" class="department-options__link p-3 text-left px-4 bg-transparent border-0">
+        @* <a asp-controller="lessee" asp-action="updatecontract" class="department-options__link p-3 text-left px-4 bg-transparent border-0">
             <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
                 <path fill-rule="evenodd" d="M4.5 10.5A.5.5 0 0 1 5 10h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
             </svg>
             Modifica Contrato
-        </a>
-        <a asp-controller="lessee" asp-action="updatepassword" class="department-options__link p-3 text-left px-4 bg-transparent border-0">
+        </a> *@
+        @* <a asp-controller="lessee" asp-action="updatepassword" class="department-options__link p-3 text-left px-4 bg-transparent border-0">
             <svg class="mr-1" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                 <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
             </svg>
             Modificar Departamentos
-        </a>
+        </a> *@
     </div>
 
     <div class="mb-5 border-bottom">
@@ -46,17 +46,20 @@
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Nombre</span>
-            <p class="p-0 col m-0">Matias Monasterio</p>
+            <p class="p-0 col m-0">@ViewBag.UserInfo.Name @ViewBag.UserInfo.Lastname</p>
         </div>
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Correo</span>
-            <p class="p-0 col m-0">matias_monasterio@outlook.com</p>
+            <p class="p-0 col m-0">@ViewBag.UserInfo.Email</p>
         </div>
 
         <div class="d-md-flex d-block mb-2">
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Telefono</span>
-            <p class="p-0 col m-0">(011) 15-34540195</p>
+
+            @if( @ViewBag.UserInfo.Telephone != null ) { <p class="p-0 col m-0">@ViewBag.UserInfo.Telephone</p>}
+            else{ <p class="p-0 col m-0">No registra</p> }
+
         </div>
 
         <div class="d-md-flex d-block mb-2">
@@ -65,7 +68,7 @@
         </div>
     </div>
 
-    <div class="mb-5 border-bottom">
+    @* <div class="mb-5 border-bottom">
         <h3 class="secondary-title mb-3">Datos Contrato</h3>
 
         <div class="d-md-flex d-block mb-2">
@@ -77,26 +80,28 @@
             <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Fecha Cierre</span>
             <p class="p-0 col m-0">01 Octubre 2022</p>
         </div>
-    </div>
+    </div> *@
 
     <div class="mb-4 border-bottom">
         <h3 class="secondary-title mb-3">Datos Departamentos</h3>
 
+        @foreach (var department in @ViewBag.Departments)
+        {
         <div class="department-info-container mb-5">
-            <h5 class="mb-1 secondary-title d-block text-secondary small">Departamento 01</h5>
+            <h5 class="mb-1 secondary-title d-block text-secondary small">Departamento @department.Id.ToString("D2")</h5>
             <div class="d-md-flex d-block mb-2">
                 <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Direccion</span>
-                <p class="p-0 col m-0">Rafael 1245</p>
+                <p class="p-0 col m-0">@department.Address @department.Number</p>
             </div>
 
             <div class="d-md-flex d-block mb-2">
                 <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Localidad</span>
-                <p class="p-0 col m-0">Moreno, Buenos Aires</p>
+                <p class="p-0 col m-0">@department.Town, @department.provincia</p>
             </div>
 
             <div class="d-md-flex d-block mb-2">
                 <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Antiguedad</span>
-                <p class="p-0 col m-0">2 años</p>
+                <p class="p-0 col m-0">@department.age años</p>
             </div>
 
             <div class="d-md-flex d-block mb-2">
@@ -111,19 +116,26 @@
 
             <div class="d-md-flex d-block mb-2">
                 <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Estado</span>
+                @if( @department.state )
+                {
                 <p class="p-0 col m-0">Ocupado</p>
+                }
+                else
+                {
+                <p class="p-0 col m-0">Desponible</p>
+                }
+                
             </div>
 
             <div class="d-md-flex d-block mb-2">
                 <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Descripcción</span>
-                <p class="p-0 col m-0">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed saepe explicabo quisquam doloribus 
-                    nesciunt exercitationem placeat cumque odit quidem officiis! Amet nam magni adipisci accusantium.
-                </p>
+                <p class="p-0 col m-0">@department.description</p>
             </div>
-        </div>
+        </div>   
+        }
+       
 
-        <div class="department-info-container mb-5">
+        @* <div class="department-info-container mb-5">
             <h5 class="mb-1 secondary-title d-block text-secondary small">Departamento 02</h5>
             <div class="d-md-flex d-block mb-2">
                 <span class="text-black-50 p-0 col-12 col-sm-4 m-0 col-lg-2">Direccion</span>
@@ -162,6 +174,6 @@
                     nesciunt exercitationem placeat cumque odit quidem officiis! Amet nam magni adipisci accusantium.
                 </p>
             </div>
-        </div>
+        </div> *@
     </div>
 </div>

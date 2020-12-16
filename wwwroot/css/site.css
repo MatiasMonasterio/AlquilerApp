@@ -26,6 +26,12 @@
   background-color: var(--white);
 }
 
+@media (min-width: 576px){
+  .modal-dialog{
+    max-width: 450px;
+  }
+}
+
 * {
   font-family: 'Lato', sans-serif;
   margin: 0;

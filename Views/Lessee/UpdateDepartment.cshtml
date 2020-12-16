@@ -1,0 +1,50 @@
+@{
+    ViewBag.Renter = false;
+}
+
+<div class="w-100 p-md-5 pb-5 px-3 fee-main dashboard position-relative">
+    <h1 class="pb-2 pb-md-0 mb-md-4 mb-2 title-main d-flex align-items-center px-3 px-md-0 pt-5 pt-md-0 mx-0">Actualizar datos</h1>
+
+    <form asp-controller="lessee" asp-action="SaveDepartmentInfo" method="POST" class="col-lg-8 col-md-10 col-12 px-0 d-flex flex-column">
+        <h3 class="secondary-title mb-4">Departamento @ViewBag.Department.Id.ToString("D2")</h3>
+        <input type="hidden" name="departmentId" value=@ViewBag.Department.Id>
+        <div class="form-group">
+            <label class="w-100 mb-2">
+                <p class="text-black-50 mb-0">Dirección</p>
+                <input class="input-form" type="text" name="address" placeholder="Ingrese la dirección" required autocomplete="off" value=@ViewBag.Department.Address>
+            </label><!-- FROM LABEL -->
+        </div><!-- FROM GROUP -->
+        <div class="form-group">
+            <label class="w-100 mb-2">
+                <p class="text-black-50 mb-0">Número</p>
+                <input class="input-form" type="text" name="number" placeholder="Ingrese la numeración" required autocomplete="off" value=@ViewBag.Department.Number>
+            </label><!-- FROM LABEL -->
+        </div><!-- FROM GROUP -->
+        <div class="form-group">
+            <label class="w-100 mb-2">
+                <p class="text-black-50 mb-0">Localidad</p>
+                <input class="input-form" type="text" name="town" placeholder="Ingrese localidad" required autocomplete="off" value=@ViewBag.Department.Town>
+            </label><!-- FROM LABEL -->
+        </div><!-- FROM GROUP -->
+        <div class="form-group">
+            <label class="w-100 mb-2">
+                <p class="text-black-50 mb-0">Provincia</p>
+                <input class="input-form" type="text" name="provincia" placeholder="Ingrese la provincia" required autocomplete="off" value=@ViewBag.Department.provincia>
+            </label><!-- FROM LABEL -->
+        </div><!-- FROM GROUP -->
+        <div class="form-group">
+            <label class="w-100 mb-2">
+                <p class="text-black-50 mb-0">Antiguedad</p>
+                <input class="input-form" type="number" name="age" placeholder="Ingrese los años de antiguedad" required autocomplete="off" value=@ViewBag.Department.age>
+            </label><!-- FROM LABEL -->
+        </div><!-- FROM GROUP -->
+        <div class="form-group">
+            <label class="w-100 mb-2">
+                <p class="text-black-50 mb-0">Descripcción</p>
+                <textarea class="input-form" name="description" placeholder="Ingrese una breve descripcción" autocomplete="off">@ViewBag.Department.description</textarea>
+            </label><!-- FROM LABEL -->
+        </div><!-- FROM GROUP -->
+
+        <input type="submit" value="Agregar" class="btn-primary px-4 py-1 ml-auto rounded-pill">
+    </form><!-- FROM -->
+</div>
