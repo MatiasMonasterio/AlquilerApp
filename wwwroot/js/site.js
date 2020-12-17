@@ -40,8 +40,8 @@ if( typeof sidebarButton != "undefined" ){
 }
 
 
-// DEPARTMENT PAGE
-if( typeof deparmetnOptions != "undefined" ){
+// DEPARTMENT LESSEE
+if( typeof lesseeDepartment != "undefined" ){
     deparmetnOptions.addEventListener('click', () => {
         deparmetnOptionsDropdown.classList.toggle('d-flex')
     });
@@ -96,22 +96,42 @@ if( typeof deparmetnOptions != "undefined" ){
     });
 }
 
+// DEPARTMENT RENTER
+if( typeof renterDepartment != "undefined" ){
+    const feeButtonList = document.querySelectorAll('[data-button]');
+    feeButtonList.forEach( element => {
+        element.addEventListener('click', () =>{
+            feeDetailsContainer.classList.add('showFeeDetailsContainer');
+
+            let feeId = element.dataset.feeId;
+            let localurl = `${window.location.origin}/RenterAPI/GetFee?idFee=${feeId}`;
+
+            fetch( localurl )
+                .then( response => response.json() )
+                // .then( data => console.log( data ) )
+                .then( data => feeDetailsUI( data ) );
+        });
+    });
+
+    feeDetailsButton.addEventListener('click', () => {
+        feeDetailsContainer.classList.remove('showFeeDetailsContainer');
+    });
+}
+
 function feeDetailsUI( feeData ){
     let title = document.querySelector("[data-title]");
     let state = document.querySelector("[data-state]");
     let expiryDate = document.querySelector("[data-expiry-date]");
     let amount = document.querySelector("[data-amount]");
     let total = document.querySelector("[data-total]");
-    let feeToModal = document.querySelector("[data-fee-id-form]");
-    let totalAmount;
 
-    feeToModal.value = feeData.id;
     title.innerText = `Cuota ${ feeData.id.toPrecision() }`;
     expiryDate.innerText = `Vencimiento ${ moment( feeData.expiryDate ).locale('es').format("ddd D MMMM") }`;
     amount.innerText= `Monto $${ feeData.amount.toFixed(2).toString().replace(/\./g,',') }`;
 
     if( feeData.paymentDate == "0001-01-01T00:00:00" ) state.innerText = 'Estado Pendiente' 
     else state.innerText = 'Estado Pagado'
+
 
     total.innerText = `Total $${ new Intl.NumberFormat("es-AR").format( feeData.amount.toFixed(2) ) }`
 }
@@ -126,6 +146,10 @@ if( typeof accountButtonEdit != "undefined" ){
 // SETTINGS
 if( typeof themeForm != "undefined" ){
     let value;
+    let userRol;
+
+    if( window.location.pathname.includes('lessee') ) userRol = 'LesseeAPI';
+    else userRol = 'RenterAPI';
 
     toggleText(feeEmit);
     toggleText(feeOverdue);
@@ -136,25 +160,25 @@ if( typeof themeForm != "undefined" ){
         if( inputTheme.checked == true ) value = true
         else value = false
 
-        let url = `${window.location.origin}/LesseeAPI/ChangeTheme?theme=${value}`;
+        let url = `${window.location.origin}/${userRol}/ChangeTheme?theme=${value}`;
 
         fetch( url );
     });
 
     feeEmit.addEventListener('change', () => {
-        let url = `${window.location.origin}/LesseeAPI/ChnageAlertFeeEmit?value=${feeEmit.checked}`;
+        let url = `${window.location.origin}/${userRol}/ChnageAlertFeeEmit?value=${feeEmit.checked}`;
         fetch( url );
         toggleText(feeEmit);
     });
 
     feeOverdue.addEventListener('change', () => {
-        let url = `${window.location.origin}/LesseeAPI/ChangeAlertFeeOverdue?value=${feeOverdue.checked}`;
+        let url = `${window.location.origin}/${userRol}/ChangeAlertFeeOverdue?value=${feeOverdue.checked}`;
         fetch( url );
         toggleText(feeOverdue);
     });
 
     feePayment.addEventListener('change', () => {
-        let url = `${window.location.origin}/LesseeAPI/ChangePaymentTicket?value=${feePayment.checked}`;
+        let url = `${window.location.origin}/${userRol}/ChangePaymentTicket?value=${feePayment.checked}`;
         fetch( url );
         toggleText(feePayment);
     });
@@ -164,6 +188,8 @@ function toggleText( element ){
     if( element.checked == true ) element.nextElementSibling.innerText = 'Activado';
     else element.nextElementSibling.innerText = 'Desactivado';
 };
+
+
 
 
 

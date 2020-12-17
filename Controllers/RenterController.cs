@@ -46,8 +46,9 @@ namespace AlquilerApp.Controllers
         }
         public IActionResult Settings(){
             Renter RenterSession = HttpContext.Session.Get<Renter>("RenterSession");
+            Renter User = db.Renter.Where( r => r.Id == RenterSession.Id ).First();
 
-            this.ViewBag.User = RenterSession;
+            this.ViewBag.User = User;
             return View();
         }
 
