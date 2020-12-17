@@ -21,6 +21,8 @@ namespace AlquilerApp.Models
         [Required]
         public DateTime ExpiryDate { get; set; }
         public DateTime PaymentDate { get; set; }
+        [Required]
+        public bool Sign { get; set; }
         public double ExpiryAmount { get; set; }
 
         public List<AditionalAmount> AditionalAmounts { get; set; }
