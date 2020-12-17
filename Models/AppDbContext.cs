@@ -12,7 +12,7 @@ namespace AlquilerApp.Models
         public DbSet<Department> Department { get; set; }
         public DbSet<Contract> Contract { get; set; }
         public DbSet<Fee> Fee { get; set; }
-        public DbSet<Fee> AditionalAmounts { get; set; }
+        public DbSet<AditionalAmount> AditionalAmount { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

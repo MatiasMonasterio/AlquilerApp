@@ -50,6 +50,15 @@ if( typeof deparmetnOptions != "undefined" ){
     feeButtonList.forEach( element => {
         element.addEventListener('click', () =>{
             feeDetailsContainer.classList.add('showFeeDetailsContainer');
+
+            let feeId = element.dataset.feeId;
+            let urlSearchParam = new URLSearchParams( window.location.search );
+            let departmentId = urlSearchParam.get('id');
+            let localurl = `${window.location.origin}/LesseeAPI/GetFee?idFee=${feeId}&idDepartment=${departmentId}`;
+
+            fetch( localurl )
+                .then( response => response.json() )
+                .then( data => feeDetailsUI( data ) );
         });
     });
 
@@ -61,6 +70,50 @@ if( typeof deparmetnOptions != "undefined" ){
         paidDropdownContainer.classList.toggle('d-none');
         paidDropdownButton.classList.toggle('deparment-container-expand')
     });
+
+    AditionalAmountForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let description = aditionalDescription.value;
+        let amount = aditionalAmount.value;
+        let feeId = aditionalFeeId.value;
+        let url = `${window.location.origin}/LesseeAPI/AddAditionalAmount`;
+
+        let AdicionalAmount = {
+            Description: description,
+            amount: amount,
+            feeId: feeId
+        }
+
+        fetch( url, {
+            method: 'POST',
+            body: JSON.stringify( AdicionalAmount ),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+        .then( () => {
+            AditionalAmountForm.reset();
+            closeAdionalAmountModal.click();
+        });
+    });
+}
+
+function feeDetailsUI( feeData ){
+    let title = document.querySelector("[data-title]");
+    let state = document.querySelector("[data-state]");
+    let expiryDate = document.querySelector("[data-expiry-date]");
+    let amount = document.querySelector("[data-amount]");
+    let total = document.querySelector("[data-total]");
+    let feeToModal = document.querySelector("[data-fee-id-form]");
+    let totalAmount;
+
+    feeToModal.value = feeData.id;
+    title.innerText = `Cuota ${ feeData.id.toPrecision() }`;
+    expiryDate.innerText = `Vencimiento ${ moment( feeData.expiryDate ).locale('es').format("ddd D MMMM") }`;
+    amount.innerText= `Monto $${ feeData.amount.toFixed(2).toString().replace(/\./g,',') }`;
+
+    if( feeData.paymentDate == "0001-01-01T00:00:00" ) state.innerText = 'Estado Pendiente' 
+    else state.innerText = 'Estado Pagado'
+
+    total.innerText = `Total $${ new Intl.NumberFormat("es-AR").format( feeData.amount.toFixed(2) ) }`
 }
 
 // ACCOUNT
@@ -69,6 +122,48 @@ if( typeof accountButtonEdit != "undefined" ){
         accountOptions.classList.toggle('d-flex');
     });
 }
+
+// SETTINGS
+if( typeof themeForm != "undefined" ){
+    let value;
+
+    toggleText(feeEmit);
+    toggleText(feeOverdue);
+    toggleText(feePayment);
+
+
+    themeForm.addEventListener('change', () => {
+        if( inputTheme.checked == true ) value = true
+        else value = false
+
+        let url = `${window.location.origin}/LesseeAPI/ChangeTheme?theme=${value}`;
+
+        fetch( url );
+    });
+
+    feeEmit.addEventListener('change', () => {
+        let url = `${window.location.origin}/LesseeAPI/ChnageAlertFeeEmit?value=${feeEmit.checked}`;
+        fetch( url );
+        toggleText(feeEmit);
+    });
+
+    feeOverdue.addEventListener('change', () => {
+        let url = `${window.location.origin}/LesseeAPI/ChangeAlertFeeOverdue?value=${feeOverdue.checked}`;
+        fetch( url );
+        toggleText(feeOverdue);
+    });
+
+    feePayment.addEventListener('change', () => {
+        let url = `${window.location.origin}/LesseeAPI/ChangePaymentTicket?value=${feePayment.checked}`;
+        fetch( url );
+        toggleText(feePayment);
+    });
+}
+
+function toggleText( element ){
+    if( element.checked == true ) element.nextElementSibling.innerText = 'Activado';
+    else element.nextElementSibling.innerText = 'Desactivado';
+};
 
 
 
