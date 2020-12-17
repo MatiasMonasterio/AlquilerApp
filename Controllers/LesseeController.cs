@@ -234,7 +234,8 @@ namespace AlquilerApp.Controllers
                         ContractId = getContract.Id,
                         Amount = amountMonth,
                         EmitDate = dateStart.AddMonths( i - 1 ),
-                        ExpiryDate = dateStart.AddMonths( i - 1 ).AddDays( 9 )
+                        ExpiryDate = dateStart.AddMonths( i - 1 ).AddDays( 9 ),
+                        Sign = false
                     };
 
                     db.Fee.Add( NewFee );
@@ -301,13 +302,15 @@ namespace AlquilerApp.Controllers
 
 
         [HttpGet]
-        public IActionResult confirmPayment( int fee, int contract )
+        public IActionResult confirmPayment( int fee, int department )
         {
-            Fee feePayment = db.Fee.Where( f => f.Id == fee && f.ContractId == contract ).First();
-            feePayment.PaymentDate = DateTime.Now;
+            Contract contractInfo = db.Contract.Where( c => c.DepartmentId == department ).First();
+            Fee feePayment = db.Fee.Where( f => f.Id == fee && f.ContractId == contractInfo.Id ).First();
 
+            feePayment.PaymentDate = DateTime.Now;
             db.SaveChanges();
-            return RedirectToAction("Department", new{id = 2});
+
+            return RedirectToAction("Department", new{id = department});
         }
 
 

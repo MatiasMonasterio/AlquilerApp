@@ -83,6 +83,20 @@ button:focus-within{
   border: 1px solid var(--primary-color);
 }
 
+.btn-primary:disabled{
+  background-color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
+.bg-info:disabled{
+  background-color: var(--info) !important;
+  border: 1px solid var(--info) !important;
+}
+.bg-info:disabled:hover{
+  background-color: var(--info) !important;
+  border: 1px solid var(--info) !important;
+}
+
 .btn-secundary{
   background-color: transparent;
   border: none;
@@ -205,6 +219,8 @@ button:focus-within{
 .max-vh-100{
   max-height: calc(var(--vh)) !important;
 }
+
+
 /*==============================================================================*/
 /*                                 User style                                   */
 /*==============================================================================*/

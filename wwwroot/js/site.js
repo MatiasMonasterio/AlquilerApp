@@ -108,7 +108,6 @@ if( typeof renterDepartment != "undefined" ){
 
             fetch( localurl )
                 .then( response => response.json() )
-                // .then( data => console.log( data ) )
                 .then( data => feeDetailsUI( data ) );
         });
     });
@@ -124,16 +123,51 @@ function feeDetailsUI( feeData ){
     let expiryDate = document.querySelector("[data-expiry-date]");
     let amount = document.querySelector("[data-amount]");
     let total = document.querySelector("[data-total]");
+    let sign = document.querySelector("[data-sign]");
 
     title.innerText = `Cuota ${ feeData.id.toPrecision() }`;
     expiryDate.innerText = `Vencimiento ${ moment( feeData.expiryDate ).locale('es').format("ddd D MMMM") }`;
     amount.innerText= `Monto $${ feeData.amount.toFixed(2).toString().replace(/\./g,',') }`;
 
-    if( feeData.paymentDate == "0001-01-01T00:00:00" ) state.innerText = 'Estado Pendiente' 
-    else state.innerText = 'Estado Pagado'
+    if( feeData.paymentDate == "0001-01-01T00:00:00" ) {
+        state.innerText = 'Estado Pendiente';
+        if( sign != null ) sign.classList.add('d-none');
+        if( typeof confirmPay != "undefined" ) {
+            let urlSearchParam = new URLSearchParams( window.location.search );
+            let departmentId = urlSearchParam.get('id');
 
+            confirmPay.href = `/lessee/confirmPayment?fee=${feeData.id}&department=${departmentId}`;
+            confirmPay.classList.remove('d-none');
+        }
+    }
+    else {
+        state.innerText = 'Estado Pagado';
+        if( sign != null ) {
+            sign.classList.remove('d-none');
+            signButtonUI( sign, feeData.sign );
 
+            sign.addEventListener('click', () => {
+                fetch(`/RenterAPI/SignFee?fee=${feeData.id}`)
+                .then( () => signButtonUI( sign, true ) );
+            });
+        }
+        if( typeof confirmPay != "undefined" ) confirmPay.classList.add('d-none');
+    }
     total.innerText = `Total $${ new Intl.NumberFormat("es-AR").format( feeData.amount.toFixed(2) ) }`
+}
+
+function signButtonUI( element, sign ){
+
+    if( sign ){
+        element.disabled = true;
+        element.innerText = 'Firmado';
+        element.classList.add('bg-info');
+    }
+    else{
+        element.disabled = false;
+        element.innerText = 'Firmar';
+        element.classList.remove('bg-info');
+    }
 }
 
 // ACCOUNT

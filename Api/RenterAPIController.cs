@@ -1,6 +1,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using AlquilerApp.Models;
+using System;
 
 namespace AlquilerApp.Controllers
 {
@@ -56,6 +57,21 @@ namespace AlquilerApp.Controllers
 
             UserUpdate.PaymentTicket = value;
             db.SaveChanges();
+        }
+
+        public JsonResult SignFee( int fee ){
+            Renter RenterSession = HttpContext.Session.Get<Renter>("RenterSession");
+            Contract ContractInfo = db.Contract.Where( c => c.RenterId == RenterSession.Id ).First();
+            Fee UpdateFee = db.Fee.Where( f => f.ContractId == ContractInfo.Id && f.Id == fee ).First();
+
+            if( UpdateFee.PaymentDate != new DateTime( 0001, 01, 01 ) )
+            {
+                UpdateFee.Sign = true;
+                db.SaveChanges();
+
+                return Json("true");
+            }
+            else { return Json("false"); }
         }
     }
 }
