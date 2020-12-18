@@ -67,6 +67,12 @@ namespace AlquilerApp
                     name: "default",
                     pattern: "{controller=User}/{action=Index}");
             });
+
+            EmailConfig.smtpHost = Configuration["Mail:smpt"];
+            EmailConfig.Port = Convert.ToInt32(Configuration["Mail:port"]);
+            EmailConfig.MailFrom = Configuration["Mail:mailFrom"];
+            EmailConfig.Password = Configuration["Mail:password"];
+
         }
     }
 }
