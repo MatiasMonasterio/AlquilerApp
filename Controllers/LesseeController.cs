@@ -115,7 +115,10 @@ namespace AlquilerApp.Controllers
         /*====================================== ACCIONES Y REDIRECCIONES =============================================*/
         /*============================================================================================================*/
         
-        public IActionResult Logout() { return RedirectToAction("Login"); }
+        public IActionResult Logout() {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login"); 
+        }
 
 
         [HttpPost]
