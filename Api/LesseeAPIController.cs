@@ -29,13 +29,12 @@ namespace AlquilerApp.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddAditionalAmount ( AditionalAmount AditionalInfo )
+        public JsonResult AddAditionalAmount ( string Description, int amount, int FeeId )
         {
-            Console.WriteLine( AditionalInfo );
             AditionalAmount aditional = new AditionalAmount(){
-                Description = AditionalInfo.Description,
-                amount = AditionalInfo.amount,
-                FeeId = AditionalInfo.FeeId
+                Description = Description,
+                amount = amount,
+                FeeId = FeeId
             };
 
             db.AditionalAmount.Add( aditional );

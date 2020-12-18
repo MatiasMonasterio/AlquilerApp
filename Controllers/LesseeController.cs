@@ -306,10 +306,12 @@ namespace AlquilerApp.Controllers
         {
             Contract contractInfo = db.Contract.Where( c => c.DepartmentId == department ).First();
             Fee feePayment = db.Fee.Where( f => f.Id == fee && f.ContractId == contractInfo.Id ).First();
+            Renter RenterInfo = db.Renter.Where( r => r.Id == contractInfo.RenterId ).First();
 
             feePayment.PaymentDate = DateTime.Now;
             db.SaveChanges();
 
+            EmailConfig.SendPaymentTicket( RenterInfo.Email );
             return RedirectToAction("Department", new{id = department});
         }
 

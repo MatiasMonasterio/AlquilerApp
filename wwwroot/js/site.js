@@ -78,16 +78,14 @@ if( typeof lesseeDepartment != "undefined" ){
         let feeId = aditionalFeeId.value;
         let url = `${window.location.origin}/LesseeAPI/AddAditionalAmount`;
 
-        let AdicionalAmount = {
-            Description: description,
-            amount: amount,
-            feeId: feeId
-        }
+        let AdicionalAmount = new FormData(); 
+        AdicionalAmount.append("Description", description);
+        AdicionalAmount.append("amount", amount);
+        AdicionalAmount.append("FeeId", feeId);
 
         fetch( url, {
             method: 'POST',
-            body: JSON.stringify( AdicionalAmount ),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
+            body: AdicionalAmount
         })
         .then( () => {
             AditionalAmountForm.reset();
